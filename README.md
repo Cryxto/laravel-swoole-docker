@@ -1,4 +1,4 @@
-# Laravel Project Docker Compose Starter (php fpm, nginx, redis)
+# Laravel Project Docker Compose Starter (laravel swoole, nginx, redis)
 
 # How to set
 
