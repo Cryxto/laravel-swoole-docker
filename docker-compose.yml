@@ -1,0 +1,41 @@
+version: "3"
+services:
+  php_container:
+    build: ./php
+    image: php_lara:latest
+    container_name: php_container
+    hostname: "cryxto_php_lara"
+    volumes:
+      - ./src:/var/www/html
+      - ./php/www.conf:/usr/local/etc/php-fpm.d/www.conf
+    working_dir: /var/www/html
+    # ports:
+    #   - 8000:8000
+
+  nginx_container:
+    build: ./nginx
+    image: nginx_lara:latest
+    container_name: nginx_container
+    hostname: "cryxto_nginx_lara"
+    # networks:
+    #   - public
+    #   - default
+    ports:
+      - "80:80"
+    volumes:
+      - ./src:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php_container
+
+  redis:
+    image: redis:alpine
+    container_name: redis_container
+    volumes:
+      - ./redis:/data
+    # ports:
+    #   # - "6379:6379"
+      # - "6379"
+# network:
+#   public:
+#     external: true
