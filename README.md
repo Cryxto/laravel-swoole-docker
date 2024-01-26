@@ -2,21 +2,22 @@
 
 # How to set
 
+## Make the laravel env first
+
+copy .env.example into .env
+
+```shell
+cp ./src/.env.example ./src/.env
+```
+
 ## Build 
 
 ```shell
+docker compose up -d --build
+```
+
+or 
+
+```shell
 docker-compose up -d --build
-```
-
-## Enter container bash
-
-```shell
-docker exec -it pemweb bash
-```
-
-
-## If there is error that refer to log , use this on container bash
-
-```shell
-chown -R www-data:www-data /var/www
 ```
